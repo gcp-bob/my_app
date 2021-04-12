@@ -1,0 +1,64 @@
+{#
+# Copyright 2021 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#}
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<h3>{{action}} Countdown</h3>
+
+<form action="/people/{{entry.id}}/birthday/calculate" method="post">
+
+  <div class="media">
+    <div class="media-body">
+      <h4 class="entry-firstname">
+      {{entry.firstname}}
+      </h4>
+    </div>
+  </div>
+
+  <div class="media">
+    <div class="media-body">
+    <label for="yob">Year of birth</label>
+    <input type="number" name="yob" id="yob" value="{{entry.yob}}" class="form-control"/>
+    </div>
+
+    <div class="media-body">
+    <label for="mob">Month of birth</label>
+    <input type="number" name="mob" id="mob" value="{{entry.mob}}" class="form-control"/>
+    </div>
+
+    <div class="media-body">
+    <label for="dob">Day of birth</label>
+    <input type="number" name="dob" id="dob" value="{{entry.dob}}" class="form-control"/>
+    </div>
+  </div>
+
+  <button name="countdown" type="submit">Start the COUNTDOWN!</button>
+</form>
+
+<div class="media">
+  <div class="media-body">
+    <h4>{{ prb_dob }}</h4>
+    <h4>{{ today_txt }}</h4>
+    <h4>{{ age_txt }}</h4>
+    <h4>{{ dob_txt }}</h4>
+    <h4>{{ doe_txt }}</h4>
+    <h4>{{ count_down }}</h4>
+  </div>
+</div>
+
+{% endblock %}
